@@ -1,20 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Noto+Sans+JP:wght@300&display=swap');
 html {
     font-size: 62.5%;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    background: #222;
-    margin: 0;
-    padding: 0;
-    font-size: 1.6rem;
-}
-
-#container {
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
 }
