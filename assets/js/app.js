@@ -87,11 +87,33 @@ let timer = function () {
         divTimer.append(createButton);
 
         createButton.addEventListener('click', () => {
-            let inputValue = createInputHours.value;
-            createInputHours.innerHTML = " ";
+
+            function activateTimer () {
+                let setInterId = setInterval(function () {
+                    createInputSecondes.value --;
+                    divTimer.innerHTML = createInputHours.value + ":" + createInputMinutes.value + ":" + createInputSecondes.value;
+                    if (parseInt(createInputSecondes.value) === 1) {
+                        if (createInputMinutes.value > 0) {
+                            createInputMinutes.value --;
+                            createInputSecondes.value = (60).toString();
+                        }
+                        else if(parseInt(createInputMinutes.value) === 0) {
+                            createInputSecondes.value = (0).toString();
+                        }
+
+                        if (parseInt(createInputMinutes.value) === 0) {
+                            createInputHours.value --;
+                        }
+                    }
+
+                },1000);
+
+
+            }
+            activateTimer();
         })
     }
 }
 
 let timer1 = new timer();
-timer1.draw()
+timer1.draw();
