@@ -105,6 +105,23 @@ let timer = function () {
                         createInputMinutes.value = (60).toString();
                     }
 
+                    if (parseInt(createInputHours.value) >= 0 && parseInt(createInputMinutes.value) >= 0 && parseInt(createInputSecondes.value) >= 0) {
+                        let stopButton = document.createElement('button');
+                        stopButton.innerHTML = "Stop";
+                        stopButton.style.width = "55%";
+                        stopButton.style.borderRadius = "12px";
+                        stopButton.style.border = "none";
+                        stopButton.style.cursor = "pointer";
+                        stopButton.style.background = "#490e0e";
+                        stopButton.style.color = "white";
+                        stopButton.style.marginTop = "1rem";
+                        stopButton.addEventListener('click', function () {
+                            console.log('sa marche');
+                        })
+                        divForTimer.append(stopButton);
+
+                    }
+
                     if (parseInt(createInputHours.value) === 0 && parseInt(createInputMinutes.value) === 0 && parseInt(createInputSecondes.value) === 0) {
                         divForTimer.innerHTML = "Finish !";
 
