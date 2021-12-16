@@ -89,25 +89,42 @@ let timer = function () {
         createButton.addEventListener('click', () => {
 
             function activateTimer () {
-                let setInterId = setInterval(function () {
-                    createInputSecondes.value --;
-                    divTimer.innerHTML = createInputHours.value + ":" + createInputMinutes.value + ":" + createInputSecondes.value;
-                    if (parseInt(createInputSecondes.value) === 1) {
-                        if (createInputMinutes.value > 0) {
-                            createInputMinutes.value --;
-                            createInputSecondes.value = (60).toString();
-                        }
-                        else if(parseInt(createInputMinutes.value) === 0) {
-                            createInputSecondes.value = (0).toString();
-                        }
+                setInterval(function () {
+                    divForTimer.innerHTML = createInputHours.value + ":" + createInputMinutes.value + ":" + createInputSecondes.value;
+                    if (createInputSecondes.value > 0) {
+                        createInputSecondes.value --;
+                    }
 
-                        if (parseInt(createInputMinutes.value) === 0) {
-                            createInputHours.value --;
-                        }
+                    if (parseInt(createInputSecondes.value) === 0 && createInputMinutes.value > 0) {
+                        createInputMinutes.value --;
+                        createInputSecondes.value = (60).toString();
+                    }
+
+                    if (parseInt(createInputMinutes.value) === 0 && createInputHours.value > 0 && parseInt(createInputSecondes.value) === 0 ) {
+                        createInputHours.value --;
+                        createInputMinutes.value = (60).toString();
+                    }
+
+                    if (parseInt(createInputHours.value) === 0 && parseInt(createInputMinutes.value) === 0 && parseInt(createInputSecondes.value) === 0) {
+                        divForTimer.innerHTML = "Finish !";
+
+                        let resetButton = document.createElement('button');
+                        resetButton.innerHTML = "reset";
+                        resetButton.style.width = "70%";
+                        resetButton.style.borderRadius = "12px";
+                        resetButton.style.border = "none";
+                        resetButton.style.cursor = "pointer";
+                        resetButton.style.background = "#490e0e";
+                        resetButton.style.color = "white";
+                        resetButton.style.marginTop = "1rem";
+                        resetButton.addEventListener('click', function () {
+                            location.reload();
+                        })
+                        divForTimer.append(resetButton);
+
                     }
 
                 },1000);
-
 
             }
             activateTimer();
