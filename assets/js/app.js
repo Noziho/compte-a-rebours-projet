@@ -33,11 +33,13 @@ let timer = function () {
         divForTimer.style.flexFlow = "row wrap";
         divForTimer.style.justifyContent = "center";
         divForTimer.style.alignItems = "center";
-        divForTimer.style.width = "70%";
         divForTimer.style.height = "50rem";
-        divForTimer.style.fontSize = "20rem"
-        divForTimer.innerHTML = "00:00:00";
+
+        let pTimer = document.createElement('p');
+        pTimer.classList = "sizeTimer";
+        pTimer.innerHTML = "00:00:00";
         document.getElementById("container").append(divForTimer);
+        document.getElementById("divTimer").append(pTimer);
 
         let divTimer = document.getElementById('divTimer')
 
@@ -87,12 +89,12 @@ let timer = function () {
         divTimer.append(createButton);
 
         createButton.addEventListener('click', () => {
-
+            createButton.style.display = "none";
             function activateTimer() {
                 let setInterId = setInterval(function () {
                     if (typeof parseInt(createInputSecondes.value) === "number" && typeof parseInt(createInputMinutes.value) === 'number' && typeof parseInt(createInputHours.value) === 'number') {
 
-                        divForTimer.innerHTML = createInputHours.value + ":" + createInputMinutes.value + ":" + createInputSecondes.value;
+                        pTimer.innerHTML = createInputHours.value + ":" + createInputMinutes.value + ":" + createInputSecondes.value;
                         if (createInputSecondes.value > 0) {
                             createInputSecondes.value--;
                         }
@@ -107,56 +109,52 @@ let timer = function () {
                             createInputMinutes.value = (60).toString();
                         }
 
-                        if (parseInt(createInputHours.value) >= 0 && parseInt(createInputMinutes.value) >= 0 && parseInt(createInputSecondes.value) >= 0) {
-                            let stopButton = document.createElement('button');
-                            stopButton.innerHTML = "Stop";
-                            stopButton.style.width = "55%";
-                            stopButton.style.borderRadius = "12px";
-                            stopButton.style.border = "none";
-                            stopButton.style.cursor = "pointer";
-                            stopButton.style.background = "#490e0e";
-                            stopButton.style.color = "white";
-                            stopButton.style.marginTop = "1rem";
-                            stopButton.addEventListener('click', function () {
-                                clearInterval(setInterId);
-                                stopButton.innerHTML = "Reset"
-                                stopButton.addEventListener('click', function () {
-                                    location.reload();
-                                })
-                            })
-                            divForTimer.append(stopButton);
 
-                        }
-
-                        if (parseInt(createInputHours.value) === 0 && parseInt(createInputMinutes.value) === 0 && parseInt(createInputSecondes.value) === 0) {
-                            divForTimer.innerHTML = "Finish !";
-
-                            let resetButton = document.createElement('button');
-                            resetButton.innerHTML = "reset";
-                            resetButton.style.width = "70%";
-                            resetButton.style.borderRadius = "12px";
-                            resetButton.style.border = "none";
-                            resetButton.style.cursor = "pointer";
-                            resetButton.style.background = "#490e0e";
-                            resetButton.style.color = "white";
-                            resetButton.style.marginTop = "1rem";
-                            resetButton.addEventListener('click', function () {
-                                location.reload();
-                            })
-                            divForTimer.append(resetButton);
-
-                        }
-
-
-                    }
-
-                    else {
+                    } else {
                         console.log("sa marche");
                     }
 
 
                 }, 1000);
+                if (parseInt(createInputHours.value) >= 0 && parseInt(createInputMinutes.value) >= 0 && parseInt(createInputSecondes.value) >= 0) {
+                    let stopButton = document.createElement('button');
+                    stopButton.innerHTML = "Stop";
+                    stopButton.style.width = "55%";
+                    stopButton.style.borderRadius = "12px";
+                    stopButton.style.border = "none";
+                    stopButton.style.cursor = "pointer";
+                    stopButton.style.background = "#490e0e";
+                    stopButton.style.color = "white";
+                    stopButton.style.marginTop = "1rem";
+                    stopButton.addEventListener('click', function () {
+                        clearInterval(setInterId);
+                        stopButton.innerHTML = "Reset"
+                        stopButton.addEventListener('click', function () {
+                            location.reload();
+                        })
+                    })
+                    divForTimer.append(stopButton);
 
+                }
+
+                if (parseInt(createInputHours.value) === 0 && parseInt(createInputMinutes.value) === 0 && parseInt(createInputSecondes.value) === 0) {
+                    divForTimer.innerHTML = "Finish !";
+
+                    let resetButton = document.createElement('button');
+                    resetButton.innerHTML = "reset";
+                    resetButton.style.width = "70%";
+                    resetButton.style.borderRadius = "12px";
+                    resetButton.style.border = "none";
+                    resetButton.style.cursor = "pointer";
+                    resetButton.style.background = "#490e0e";
+                    resetButton.style.color = "white";
+                    resetButton.style.marginTop = "1rem";
+                    resetButton.addEventListener('click', function () {
+                        location.reload();
+                    })
+                    divForTimer.append(resetButton);
+
+                }
             }
 
             activateTimer();
@@ -166,3 +164,6 @@ let timer = function () {
 
 let timer1 = new timer();
 timer1.draw();
+
+let timer2 = new timer();
+timer2.draw();

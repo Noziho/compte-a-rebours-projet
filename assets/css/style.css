@@ -2,3 +2,33 @@
 html {
     font-size: 62.5%;
 }
+
+.sizeTimer {
+    display: block;
+    font-size: 20rem;
+    margin: 0;
+}
+#divTimer {
+     width: 70%;
+ }
+@media screen and (max-width: 850px){
+    .sizeTimer {
+        font-size: 15rem;
+    }
+}
+
+@media screen and (max-width: 630px){
+    .sizeTimer {
+        font-size: 10rem;
+    }
+
+    #divTimer {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sizeTimer {
+        font-size: 7rem;
+    }
+}
