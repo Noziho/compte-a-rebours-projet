@@ -11,6 +11,13 @@ html {
 #divTimer {
      width: 70%;
  }
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+}
 @media screen and (max-width: 850px){
     .sizeTimer {
         font-size: 15rem;

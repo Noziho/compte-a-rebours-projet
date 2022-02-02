@@ -9,13 +9,6 @@ let timer = function () {
         document.body.style.fontFamily = 'Bakbak One, cursive';
         document.body.style.color = "white";
 
-        //Create main title
-        let createH1 = document.createElement("h1");
-        createH1.innerHTML = "Timer"
-        createH1.style.display = "flex";
-        createH1.style.justifyContent = "center";
-        document.body.append(createH1);
-
         //Create principal container for divTimer
         let principalContainer = document.createElement("div");
         principalContainer.id = "container"
@@ -33,7 +26,7 @@ let timer = function () {
         divForTimer.style.flexFlow = "row wrap";
         divForTimer.style.justifyContent = "center";
         divForTimer.style.alignItems = "center";
-        divForTimer.style.height = "50rem";
+        divForTimer.style.height = "auto";
 
         let pTimer = document.createElement('p');
         pTimer.classList = "sizeTimer";
@@ -167,3 +160,6 @@ timer1.draw();
 
 let timer2 = new timer();
 timer2.draw();
+
+let timer3 = new timer();
+timer3.draw();
